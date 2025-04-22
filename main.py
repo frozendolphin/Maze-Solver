@@ -5,17 +5,16 @@ from cell import Cell
 from maze import Maze
 
 def main():
-    win = Window(800, 600)
-    
-    # cell1 = Cell(win)
-    # cell2 = Cell(win)
-    # win.draw_line(Line(Point(0, 0), Point(800, 600)), "lightblue")
-    # win.draw_line(Line(Point(800, 0), Point(0, 600)), "teal")
-    # cell1.draw(50, 100, 100, 150)
-    # cell2.draw(150, 200, 200, 250)
-    # cell1.draw_move(cell2, True)
-    
-    m1 = Maze(50, 50, 10, 14, 50, 50, win)
+    num_rows = 12
+    num_cols = 16
+    margin = 50
+    screen_x = 800
+    screen_y = 600
+    cell_size_x = (screen_x - 2 * margin) / num_cols
+    cell_size_y = (screen_y - 2 * margin) / num_rows
+    win = Window(screen_x, screen_y)
+
+    maze = Maze(margin, margin, num_rows, num_cols, cell_size_x, cell_size_y, win)
     
     win.wait_for_close()
 
