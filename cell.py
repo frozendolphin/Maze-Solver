@@ -19,23 +19,31 @@ class Cell():
         self.y1 = y1
         self.x2 = x2
         self.y2 = y2
+        color = "black"
         if self.left_wall:
-            line = Line(Point(self.x1, self.y1), Point(self.x1, self.y2))
-            self.win.draw_line(line, "red") 
+            color = "#00FFFF"
+        line = Line(Point(self.x1, self.y1), Point(self.x1, self.y2))
+        self.win.draw_line(line, color) 
+        color = "black"
         if self.right_wall:
-            line = Line(Point(self.x2, self.y1), Point(self.x2, self.y2))
-            self.win.draw_line(line, "red") 
+            color = "#00FFFF"
+        line = Line(Point(self.x2, self.y1), Point(self.x2, self.y2))
+        self.win.draw_line(line, color) 
+        color = "black"
         if self.top_wall:
-            line = Line(Point(self.x1, self.y1), Point(self.x2, self.y1))
-            self.win.draw_line(line, "red") 
+            color = "#00FFFF"
+        line = Line(Point(self.x1, self.y1), Point(self.x2, self.y1))
+        self.win.draw_line(line, color) 
+        color = "black"
         if self.bottom_wall:
-            line = Line(Point(self.x1, self.y2), Point(self.x2, self.y2))
-            self.win.draw_line(line, "red") 
+            color = "#00FFFF"
+        line = Line(Point(self.x1, self.y2), Point(self.x2, self.y2))
+        self.win.draw_line(line, color) 
     
     def draw_move(self, to_cell, undo=False):
-        color = "teal"
+        color = "#CCFF00"
         if undo:
-            color = "#c4e1ce"
+            color = "#C71585"
         midx1 = (self.x1 + self.x2)/2
         midy1 = (self.y1 + self.y2)/2
         midx2 = (to_cell.x1 + to_cell.x2)/2
