@@ -92,3 +92,30 @@ class Maze():
         for i in range(self.num_rows):
             for j in range(self.num_cols):
                 self._cells[i][j].visited = False
+    
+    def solve(self):
+        return self.solve_r(0, 0)
+    
+    def solve_r(self, i, j):
+        self._animate()
+        current_cell = self._cells[i][j]
+        current_cell.visited = True
+        if current_cell == self._cells[self.num_rows - 1][self.num_cols - 1]:
+            return True
+        directions = [(i - 1, j), (i + 1, j), (i, j - 1), (i, j + 1)]
+        random.shuffle(directions)
+        for direction in directions:
+            if 0 <= direction[0] < self.num_rows:
+                if 0 <= direction[1] < self.num_cols:
+                    if not self._cells[direction[0]][direction[1]].visited: 
+                        if (direction[0] == i + 1 and not current_cell.bottom_wall)\
+                            or (direction[0] == i - 1 and not current_cell.top_wall)\
+                            or (direction[1] == j + 1 and not current_cell.right_wall)\
+                            or (direction[1] == j - 1 and not current_cell.left_wall):
+                            current_cell.draw_move(self._cells[direction[0]][direction[1]])
+                            if self.solve_r(direction[0], direction[1]):
+                                return True
+                            current_cell.draw_move(self._cells[direction[0]][direction[1]], undo=True)
+        return False
+                            
+        
