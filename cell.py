@@ -3,7 +3,7 @@
 from window import Line, Point
 
 class Cell():
-    def __init__(self, window):
+    def __init__(self, window=None):
         self.left_wall = True
         self.right_wall = True
         self.top_wall = True
